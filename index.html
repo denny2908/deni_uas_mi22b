@@ -1,250 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stuff Store</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            padding: 5px;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-        }
-
-        .content {
-            flex-grow: 1;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
-</head>
-
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    <nav class="border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Stuff Store</span>
-            </a>
-            <button id="menu-toggle" data-collapse-toggle="navbar-hamburger" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button>
-            <div class="hidden w-full" id="navbar-hamburger">
-                <ul class="flex flex-col font-medium mt-4 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded dark:bg-blue-600" aria-current="page">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Services</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="content p-4 max-w-screen-xl mx-auto">
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <div class="mb-4">
-                <input type="text" placeholder="Name of stuff" id="name" class="border border-gray-300 p-2 rounded w-full mb-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                <input type="number" placeholder="Price of stuff" id="price" class="border border-gray-300 p-2 rounded w-full mb-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
-                <select id="category" class="border border-gray-300 p-2 rounded w-full mb-4 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <option value="Furniture">Furniture</option>
-                    <option value="Electronic">Electronic</option>
-                </select>
-                <button type="button" onclick="SaveStuff()" id="save" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save</button>
-            </div>
-            <table class="w-full text-left border-collapse border border-gray-300 dark:border-gray-700">
-                <thead class="bg-gray-200 dark:bg-gray-700">
-                    <tr>
-                        <th class="p-2 border border-gray-300 dark:border-gray-700">No.</th>
-                        <th class="p-2 border border-gray-300 dark:border-gray-700">Name</th>
-                        <th class="p-2 border border-gray-300 dark:border-gray-700">Category</th>
-                        <th class="p-2 border border-gray-300 dark:border-gray-700">Price</th>
-                        <th class="p-2 border border-gray-300 dark:border-gray-700">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="result" class="bg-white dark:bg-gray-800">
-                    <tr>
-                        <td class="p-2 border border-gray-300 dark:border-gray-700">1</td>
-                        <td class="p-2 border border-gray-300 dark:border-gray-700">Wardrobe</td>
-                        <td class="p-2 border border-gray-300 dark:border-gray-700">Furniture</td>
-                        <td class="p-2 border border-gray-300 dark:border-gray-700">$100</td>
-                        <td class="p-2 border border-gray-300 dark:border-gray-700">
-                            <button type="button" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="DeleteStuff(1)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <h1 class="mt-4 text-xl font-bold">Total: $<span id="total-price">0</span></h1>
-        </div>
-    </div>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealer Motor Resmi</title>
+    <link href="./output.css" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-white">
+    <header class="bg-gray-100 py-6 shadow-md">
+        <div class="container mx-auto text-center">
+            <img src="/img/logo-lp3i.png" alt="Politeknik LP3I Kampus Tasikmalaya" class="mx-auto mb-4 w-24 h-auto">
+            <h1 class="text-xl font-semibold">Dealer Motor Resmi</h1>
+            <p class="text-gray-600">Berikut ini adalah beberapa motor yang tersedia:</p>
+        </div>
+    </header>
+    
+    <main class="container mx-auto mt-8">
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Produk akan dimuat di sini oleh JavaScript -->
+        </div>
+    </main>
+
+    <footer class="bg-black py-4 mt-8 shadow-md">
+        <div class="container mx-auto text-center text-gray-600">
+            &copy; 2023 Materi kuliah Front End Development by kanglerian | Politeknik LP3I Kampus Tasikmalaya
+        </div>
+    </footer>
+
     <script>
-        function toggleMenu() {
-            let navbar = document.getElementById('navbar-hamburger');
-            navbar.classList.toggle('hidden');
-        }
+        let products = [];
+        let categories = [];
 
-        document.getElementById('menu-toggle').addEventListener('click', function (event) {
-            event.stopPropagation();
-            toggleMenu();
-        });
-
-        document.addEventListener('click', function (event) {
-            let navbar = document.getElementById('navbar-hamburger');
-            let menuToggle = document.getElementById('menu-toggle');
-            if (!navbar.classList.contains('hidden') && !navbar.contains(event.target) && event.target !== menuToggle) {
-                navbar.classList.add('hidden');
+        const fetchProducts = async () => {
+            try {
+                const productResponse = await axios.get('http://localhost:3000/products');
+                products = productResponse.data;
+                displayProducts();
+            } catch (error) {
+                console.error('Error fetching products:', error);
             }
-        });
+        };
 
-        const GetStuff = async () => {
-            await axios.get('http://localhost:3000/stuff')
-                .then((response) => {
-                    console.log(response.data);
-                    const stuffs = response.data;
-                    let bucket = '';
-                    let totalPrice = 0;
-                    stuffs.forEach((stuff, index) => {
-                        bucket += `
-                            <tr>
-                                <td class="p-2 border border-gray-300 dark:border-gray-700">${index + 1}</td>
-                                <td class="p-2 border border-gray-300 dark:border-gray-700">${stuff.name}</td>
-                                <td class="p-2 border border-gray-300 dark:border-gray-700">${stuff.category}</td>
-                                <td class="p-2 border border-gray-300 dark:border-gray-700">$${stuff.price}</td>
-                                <td class="p-2 border border-gray-300 dark:border-gray-700">
-                                    <button type="button" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600" onclick="EditStuff('${stuff.id}')">Edit</button>
-                                    <button type="button" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="DeleteStuff('${stuff.id}')">Delete</button>
-                                </td>
-                            </tr>
-                        `;
-                        totalPrice += parseFloat(stuff.price);
-                    });
-                    document.getElementById('result').innerHTML = bucket;
-                    document.getElementById('total-price').innerHTML = totalPrice.toFixed(2);
-                })
-                .catch((error) => {
-                    alert(error.message);
-                })
-        }
-
-        GetStuff();
-
-        const GetCategories = async () => {
-            await axios.get('http://localhost:3000/categories')
-                .then((response) => {
-                    console.log(response.data);
-                    const category = response.data;
-                    let bucket = '';
-                    category.forEach((categories, index) => {
-                        bucket += `
-                            <option value="${categories.name}">
-                                ${categories.name}
-                            </option>
-                        `;
-                    });
-                    document.getElementById('category').innerHTML = bucket;
-                })
-                .catch((error) => {
-                    alert(error.message);
-                })
-        }
-
-        GetCategories();
-
-        const SaveStuff = async () => {
-            let name = document.getElementById('name').value;
-            let price = document.getElementById('price').value;
-            let category = document.getElementById('category').value;
-            await axios.post('http://localhost:3000/stuff', {
-                name: name,
-                price: price,
-                category: category,
-            })
-                .then((response) => {
-                    console.log(response);
-                    GetStuff();
-                })
-                .catch((error) => {
-                    alert(error.message);
-                })
-        }
-
-        const DeleteStuff = async (id) => {
-            const confirmVal = confirm('Apakah data akan dihapus?');
-            if (confirmVal) {
-                await axios.delete(`http://localhost:3000/stuff/${id}`)
-                    .then((response) => {
-                        console.log(response);
-                        GetStuff();
-                    })
-                    .catch((error) => {
-                        alert(error.message);
-                    })
+        const fetchCategories = async () => {
+            try {
+                const categoryResponse = await axios.get('http://localhost:3000/categories');
+                categories = categoryResponse.data;
+            } catch (error) {
+                console.error('Error fetching categories:', error);
             }
-        }
+        };
 
-        const EditStuff = async (id) => {
-            await axios.get(`http://localhost:3000/stuff/${id}`)
-                .then((response) => {
-                    const stuff = response.data;
-                    document.getElementById("name").value = stuff.name;
-                    document.getElementById("price").value = stuff.price;
-                    document.getElementById("category").value = stuff.category;
-                    document.getElementById("save").innerText = "Update";
-                    document.getElementById("save").setAttribute('onclick', `UpdateStuff('${id}')`);
-                    console.log(response);
-                })
-                .catch((error) => {
-                    alert(error.message);
-                })
-        }
+        const displayProducts = () => {
+            let productList = '';
+            products.forEach(product => {
+                const categoryName = categories.find(cat => cat.id === product.category)?.name || 'Unknown';
+                const imageSrc = product.image.startsWith('data:image/') ? product.image : 'data:image/png;base64,' + product.image;
+                
+                productList += `
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <img src="${imageSrc}" alt="${product.name}" class="h-40 w-full object-cover mb-4">
+                        <h2 class="text-lg font-semibold">${product.name}</h2>
+                        <p class="text-gray-600 mb-4">${product.description}</p>
+                        <span class="inline-block bg-blue-200 text-blue-800 px-2 py-1 rounded-full text-sm mb-2">${categoryName}</span>
+                        <p class="text-lg font-semibold text-gray-800">Rp${product.price}</p>
+                    </div>
+                `;
+            });
 
-        const UpdateStuff = async (id) => {
-            let name = document.getElementById('name').value;
-            let price = document.getElementById('price').value;
-            let category = document.getElementById('category').value;
-            await axios.patch(`http://localhost:3000/stuff/${id}`, {
-                name: name,
-                price: price,
-                category: category,
-            })
-                .then((response) => {
-                    console.log(response);
-                    document.getElementById("name").value = "";
-                    document.getElementById("price").value = "";
-                    document.getElementById("save").innerText = "Save";
-                    document.getElementById("save").setAttribute('onclick', `SaveStuff()`);
-                    GetStuff();
-                })
-                .catch((error) => {
-                    alert(error.message);
-                })
-        }
+            document.getElementById('product-list').innerHTML = productList;
+        };
+
+        const init = async () => {
+            await fetchCategories();
+            await fetchProducts();
+        };
+
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-
 </html>
